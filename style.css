@@ -10,9 +10,9 @@ body {
   
   .game-board {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     grid-gap: 10px;
-    width: 400px;
+    width: 500px;
   }
   
   .card {
@@ -73,8 +73,8 @@ body {
     font-weight: 600;
 
     position: absolute;
-    left: 52%;
-    top: 75%;
+    left: 55%;
+    top: 80%;
     transform: translate(-50%, -50%);
 }
 
@@ -84,6 +84,16 @@ body {
 
     position: absolute;
     left: 52%;
+    top: 20%;
+    transform: translate(-50%, -50%);
+}
+
+#flipCount{
+    font-size: 6em;
+    color: #bf49fa;
+
+    position: absolute;
+    left: 55%;
     top: 20%;
     transform: translate(-50%, -50%);
 }

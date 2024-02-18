@@ -7,14 +7,25 @@ const icons = [
   "fas fa-dragon",
   "fas fa-puzzle-piece",
   "fas fa-star",
+  "fas fa-film",
+  "fas fa-code",
+  "fas fa-book-skull",
+  "fas fa-diamond",
+  "fas fa-chess-rook",
+  "fas fa-bone",
+  "fas fa-laptop",
 ];
+
+let clickCount = 0;
+
 function restartGame() {
   gameBoard.innerHTML = " ";
+  clickCount = 0;
   flippedCards = 0;
   lockBoard = false;
   const allCards = document.querySelectorAll(".card");
   allCards.forEach((card) => card.classList.remove("flipped"));
-  init();
+  initGame();
 }
 
 const restartButton = document.querySelector(".restart-btn");
@@ -26,7 +37,7 @@ let firstCard, secondCard;
 let flippedCards = 0;
 let lockBoard = false;
 
-function shuffle(array) {
+function shuffleCards(array) {
   for (let i = array.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];
@@ -34,14 +45,14 @@ function shuffle(array) {
   return array;
 }
 
-function createCard(icon) {
+function createCardElement(icon) {
   const card = document.createElement("div");
   card.classList.add("card");
   card.innerHTML = `
-        <div class="card-inner">
-          <div class="card-front"><i class="${icon}"></i></div>
-          <div class="card-back"></div>
-        </div>`;
+          <div class="card-inner">
+            <div class="card-front"><i class="${icon}"></i></div>
+            <div class="card-back"></div>
+          </div>`;
   card.addEventListener("click", flipCard);
   return card;
 }
@@ -51,6 +62,9 @@ function flipCard() {
   if (this === firstCard) return;
 
   this.classList.add("flipped");
+  clickCount++;
+
+  document.getElementById("flipCount").innerText = `Flips: ${clickCount}`;
 
   if (!firstCard) {
     firstCard = this;
@@ -58,22 +72,22 @@ function flipCard() {
   }
 
   secondCard = this;
-  checkForMatch();
+  checkForCardMatch();
 }
 
-function checkForMatch() {
+function checkForCardMatch() {
   if (
     firstCard.querySelector(".card-front i").className ===
     secondCard.querySelector(".card-front i").className
   ) {
-    disableCards();
+    disableMatchedCards();
     return;
   }
 
-  unflipCards();
+  unflipMismatchedCards();
 }
 
-function disableCards() {
+function disableMatchedCards() {
   firstCard.removeEventListener("click", flipCard);
   secondCard.removeEventListener("click", flipCard);
 
@@ -82,7 +96,7 @@ function disableCards() {
   checkForWin(); // Check if all cards have been flipped
 }
 
-function unflipCards() {
+function unflipMismatchedCards() {
   lockBoard = true;
 
   setTimeout(() => {
@@ -108,12 +122,12 @@ function checkForWin() {
   }
 }
 
-function init() {
-  const shuffledCards = shuffle(cards);
+function initGame() {
+  const shuffledCards = shuffleCards(cards);
   shuffledCards.forEach((icon) => {
-    const card = createCard(icon);
+    const card = createCardElement(icon);
     gameBoard.appendChild(card);
   });
 }
 
-init();
+initGame();
