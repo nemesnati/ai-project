@@ -80,11 +80,19 @@ body {
 
 #winText{
     font-size: 8em;
-    color: #000000;
-
+    font-family: roboto;
+    color: #bf49fa;
+    border: 1px solid #d4d4d4;
+    background-color: rgb(232, 229, 229);
+    box-shadow: 15px 15px 15px rgb(180, 180, 180);
+    padding:55px;
+    padding-left: 120px;
+    align-self: center;
+    max-width: 6em;
+    max-height: 5em;
     position: absolute;
-    left: 52%;
-    top: 20%;
+    left: 56%;
+    top: 50%;
     transform: translate(-50%, -50%);
 }
 

@@ -19,8 +19,8 @@ const icons = [
 let clickCount = 0;
 
 function restartGame() {
-  gameBoard.innerHTML = " ";
   clickCount = 0;
+  gameBoard.innerHTML = " ";
   flippedCards = 0;
   lockBoard = false;
   const allCards = document.querySelectorAll(".card");
@@ -63,7 +63,6 @@ function flipCard() {
 
   this.classList.add("flipped");
   clickCount++;
-
   document.getElementById("flipCount").innerText = `Flips: ${clickCount}`;
 
   if (!firstCard) {
@@ -117,7 +116,7 @@ function checkForWin() {
     const winText = document.createElement("div");
     winText.classList.add("win-text");
     winText.setAttribute("id", "winText");
-    winText.innerText = "You did it!";
+    winText.innerText = `You did it in ${clickCount} flips!`;
     gameBoard.appendChild(winText);
   }
 }
