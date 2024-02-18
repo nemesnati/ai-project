@@ -9,7 +9,6 @@ const icons = [
   "fas fa-star",
 ];
 function restartGame() {
-  stopTimer();
   gameBoard.innerHTML = " ";
   flippedCards = 0;
   lockBoard = false;
@@ -39,10 +38,10 @@ function createCard(icon) {
   const card = document.createElement("div");
   card.classList.add("card");
   card.innerHTML = `
-      <div class="card-inner">
-        <div class="card-front"><i class="${icon}"></i></div>
-        <div class="card-back"></div>
-      </div>`;
+        <div class="card-inner">
+          <div class="card-front"><i class="${icon}"></i></div>
+          <div class="card-back"></div>
+        </div>`;
   card.addEventListener("click", flipCard);
   return card;
 }
@@ -79,6 +78,8 @@ function disableCards() {
   secondCard.removeEventListener("click", flipCard);
 
   resetBoard();
+  flippedCards++; // Increment the number of flipped cards
+  checkForWin(); // Check if all cards have been flipped
 }
 
 function unflipCards() {
@@ -96,7 +97,17 @@ function resetBoard() {
   [firstCard, secondCard] = [null, null];
   lockBoard = false;
 }
-// startTimer();
+
+function checkForWin() {
+  if (flippedCards === cards.length / 2) {
+    const winText = document.createElement("div");
+    winText.classList.add("win-text");
+    winText.setAttribute("id", "winText");
+    winText.innerText = "You did it!";
+    gameBoard.appendChild(winText);
+  }
+}
+
 function init() {
   const shuffledCards = shuffle(cards);
   shuffledCards.forEach((icon) => {
