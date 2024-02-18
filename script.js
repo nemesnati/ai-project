@@ -20,6 +20,7 @@ let clickCount = 0;
 
 function restartGame() {
   clickCount = 0;
+  document.getElementById("flipCount").innerText = `Flips: 0`;
   gameBoard.innerHTML = " ";
   flippedCards = 0;
   lockBoard = false;
