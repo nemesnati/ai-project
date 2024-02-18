@@ -11,8 +11,9 @@ body {
   .game-board {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    grid-gap: 15px;
-    width: 51rem;
+    grid-gap: 0.5rem;
+    max-width: 50rem;
+    max-width: 50rem;
     margin: 0 auto;
   }
   
@@ -24,8 +25,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 120px;
-    width: 120px;
+    height: 6rem;
+    width: 6rem;
     cursor: pointer;
     perspective: 1000px;
     border-radius: 10px;
@@ -71,7 +72,7 @@ body {
     color:#bf49fa;
     width: 200px; /* Set the width to 200 pixels */
     height: 50px;
-    font-size: 2em;
+    font-size: clamp(20px, 5vh, 40px);
     font-family: roboto;
     font-weight: 600;
 
@@ -82,7 +83,7 @@ body {
 }
 
 #winText{
-    font-size: 8em;
+    font-size: clamp(30px, 5vh, 60px);
     font-family: roboto;
     color: #bf49fa;
     border: 1px solid #d4d4d4;
@@ -101,12 +102,12 @@ body {
 }
 
 #flipCount{
-    font-size: 6em;
+    font-size: clamp(30px, 7vh, 90px);
     color: #bf49fa;
 
     position: absolute;
     left: 50%;
-    top: 10%;
+    top: 8%;
     transform: translate(-50%, -50%);
 }
 
