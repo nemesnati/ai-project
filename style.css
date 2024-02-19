@@ -12,8 +12,6 @@ body {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-gap: 0.5rem;
-    max-width: 50rem;
-    max-width: 50rem;
     margin: 0 auto;
   }
   
@@ -25,8 +23,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 6rem;
-    width: 6rem;
+    min-height: 11vh;
+    min-width: 10vw;
     cursor: pointer;
     perspective: 1000px;
     border-radius: 10px;
@@ -63,7 +61,7 @@ body {
   }
   
   .card-front i {
-    font-size: 3rem;
+    font-size: clamp(0px, 4vh, 40px);
     color:#bf49fa;
   }
 
@@ -78,7 +76,7 @@ body {
 
     position: absolute;
     left: 50%;
-    bottom: 5%;
+    bottom: 2%;
     transform: translate(-50%, -50%);
 }
 
