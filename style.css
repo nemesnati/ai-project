@@ -25,6 +25,7 @@ body {
     align-items: center;
     min-height: 11vh;
     min-width: 10vw;
+    
     cursor: pointer;
     perspective: 1000px;
     border-radius: 10px;
@@ -74,6 +75,7 @@ body {
     font-family: roboto;
     font-weight: 600;
 
+    cursor: pointer;
     position: absolute;
     left: 50%;
     bottom: 2%;
